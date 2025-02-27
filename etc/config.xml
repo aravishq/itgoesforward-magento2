@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <it_goes_forward>
+            <api>
+                <status>0</status>
+                <base_uri>https://api.itgoesforward.com/api/v1/</base_uri>
+            </api>
+        </it_goes_forward>
+    </default>
+</config>

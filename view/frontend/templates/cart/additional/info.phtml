@@ -1,0 +1,33 @@
+<?php
+/** @var $block \Aravis\ItGoesForward\Block\Cart\Additional\Info */
+
+$configValue = $this->helper('Aravis\ItGoesForwardHyva\Helper\Data')->getConfig('it_goes_forward_hyva/frontend/link_url');
+?>
+<?php if ($block->getIsItGoesForwardProduct()): ?>
+    <div class="cart-forward px-4 py-3 text-xs lg:text-base">
+        <div class="flex items-center gap-2">
+            <img src="<?= $block->getViewFileUrl('Aravis_ItGoesForward::svg/sustainability.svg'); ?>"
+                 width="18"
+                 height="18"
+                 style="float:left;margin-right:5px;"
+            />
+            <span class="text-igf-green font-semibold">
+                <?= $escaper->escapeHtml(__('Return deal &bull; Reduce CO&#8322;')) ?>
+            </span>
+        </div>
+
+        <span><?= $escaper->escapeHtml(__('The item will be shipped directly from another customer.'))?></span>
+        <span><?= $escaper->escapeHtml(__('Important to know:'))?></span>
+        <ul class="list-disc list-inside">
+            <li><?= $escaper->escapeHtml(__('It is in brand-new condition. If not, let us know in the rating mail'))?></li>
+            <li><?= $escaper->escapeHtml(__('The packaging may differ'))?></li>
+            <li><?= $escaper->escapeHtml(__('You are refunded within 3 days after the Forward arrived at the buyer'))?></li>
+        </ul>
+    </div>
+
+    <style>
+        [for="cart-<?= $escaper->escapeHtmlAttr($block->getItem()->getItemId()) ?>-qty"] {
+            display: none;
+        }
+    </style>
+<?php endif; ?>

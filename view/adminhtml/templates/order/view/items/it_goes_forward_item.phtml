@@ -1,0 +1,24 @@
+<?php
+/**
+ * @var Magento\Backend\Block\Template $block
+ */
+
+$parent = $block->getParentBlock();
+$item = $parent->getItem();
+$itGoesForward = $item->getData('it_goes_forward');
+?>
+
+<?php if ($itGoesForward): ?>
+<tr>
+    <td>
+        <strong>
+            <img src="<?= $block->getViewFileUrl('Aravis_ItGoesForward::images/sustainability.png'); ?>"
+                 width="18"
+                 height="18"
+                 style="float:left;margin-right:5px;"
+            />
+            <span>It Goes Forward listing: <?= $itGoesForward; ?></span>
+        </strong>
+    </td>
+</tr>
+<?php endif; ?>

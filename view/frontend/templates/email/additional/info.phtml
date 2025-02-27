@@ -1,0 +1,12 @@
+<?php
+/** @var $block \Magento\Framework\View\Element\Template */
+
+$item = $block->getParentBlock()->getData('item');
+?>
+
+<?php if ($item->getData('it_goes_forward') !== null): ?>
+    <strong>Thank you for choosing a Forward!</strong><br>
+    <br>
+    You’ve made a conscious choice by purchasing a product directly from another customer, reducing waste and cutting CO2 emissions.
+    Since it's coming from a fellow customer, it may take a little longer to arrive, but your sustainable decision is helping the planet!
+<?php endif ?>

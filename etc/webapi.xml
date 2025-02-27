@@ -1,0 +1,20 @@
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Webapi/etc/webapi.xsd">
+    <route url="/V1/itgoesforward/listings/sku/:sku" method="GET">
+        <service class="Aravis\ItGoesForward\Api\ListingsApiInterface" method="getListingsBySku"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/itgoesforward/listings/product/:ids" method="GET">
+        <service class="Aravis\ItGoesForward\Api\ListingsApiInterface" method="getListingsByProductIds"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/itgoesforward/order/increment_id/:increment_id" method="GET">
+        <service class="Aravis\ItGoesForward\Api\OrderByIncrementIdInterface" method="getOrderByIncrementId"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

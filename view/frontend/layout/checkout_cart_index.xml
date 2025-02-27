@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="additional.product.info">
+            <block class="Aravis\ItGoesForward\Block\Cart\Additional\Info"
+                   name="aravis.itgoesforward.cart.additional.info"
+                   template="Aravis_ItGoesForward::cart/additional/info.phtml"
+                   ifconfig="it_goes_forward/api/status"/>
+        </referenceBlock>
+    </body>
+</page>

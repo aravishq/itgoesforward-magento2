@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="it_goes_forward" sortOrder="900" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
+            <label>It Goes Forward</label>
+            <tab>service</tab>
+            <resource>Aravis_ItGoesForward::config_aravis_itgoesforward</resource>
+            <group id="api" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
+                <label>API Configuration</label>
+                <field id="status" type="select" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
+                    <label>Status</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="base_uri" type="text" sortOrder="20" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
+                    <label>Base URI</label>
+                    <comment/>
+                </field>
+                <field id="api_key" type="text" sortOrder="30" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
+                    <label>API Key</label>
+                    <comment/>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

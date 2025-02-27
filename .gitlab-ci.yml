@@ -1,0 +1,14 @@
+stages:
+  - deploy
+
+deploy_to_github:
+  stage: deploy
+  script:
+    - git remote add github git@github.com:aravishq/itgoesforward-magento2.git
+    - git checkout main
+    - rm .gitlab-ci.yml
+    - git commit -a -m "Public release"
+    - git reset $(git commit-tree HEAD^{tree} -m "Public release")
+    - git push --force github main
+  only:
+    - main

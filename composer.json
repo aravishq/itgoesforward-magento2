@@ -1,0 +1,19 @@
+{
+  "name": "aravis/itgoesforward-magento2",
+  "description": "Magento 2 integration for ItGoesForward",
+  "require": {
+    "php": ">=7.4"
+  },
+  "type": "magento2-module",
+  "license": [
+    "MIT"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Aravis\\ItGoesForward\\": ""
+    }
+  }
+}
