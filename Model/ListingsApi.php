@@ -24,7 +24,7 @@ class ListingsApi implements ListingsApiInterface
         $listings = $this->apiService->getListingBySku($sku);
 
         return array_filter($listings, function (array $listing) {
-            return mb_strtolower($listing['status']) === 'available' && $listing['matched'] === false;
+            return mb_strtolower($listing['status']) === 'available';
         });
     }
 
@@ -43,7 +43,7 @@ class ListingsApi implements ListingsApiInterface
         }
 
         return array_filter($listings, function (array $listing) {
-            return mb_strtolower($listing['status']) === 'available' && $listing['matched'] === false;
+            return mb_strtolower($listing['status']) === 'available';
         });
     }
 }
