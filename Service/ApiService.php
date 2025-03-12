@@ -35,18 +35,9 @@ class ApiService
         }
     }
 
-    public function getListingByProductId(string $productId): array
+    public function getListingByProductId(string $productId, string $ip): array
     {
         try {
-            if(!empty($_SERVER['HTTP_CLIENT_IP'])){
-                //ip from share internet
-                $ip = $_SERVER['HTTP_CLIENT_IP'];
-            }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
-                //ip pass from proxy
-                $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-            }else{
-                $ip = $_SERVER['REMOTE_ADDR'];
-            }
             $result = $this->getClient()->get("listings/product/{$productId}?ip=$ip");
 
             return json_decode($result->getBody()->getContents(), true);
@@ -55,12 +46,12 @@ class ApiService
         }
     }
 
-    public function getListingsByProductIds(array $productIds): array
+    public function getListingsByProductIds(array $productIds, string $ip): array
     {
         try {
             // API currently doesn't support URL encoded query string, this is a temporary workaround
             $query = implode(',', $productIds);
-            $result = $this->getClient()->get("listings/product?ids=$query");
+            $result = $this->getClient()->get("listings/product?ids=$query?ip=$ip");
 
             return json_decode($result->getBody()->getContents(), true);
         } catch (GuzzleException $e) {
