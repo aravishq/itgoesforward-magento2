@@ -51,7 +51,7 @@ class ApiService
         try {
             // API currently doesn't support URL encoded query string, this is a temporary workaround
             $query = implode(',', $productIds);
-            $result = $this->getClient()->get("listings/product?ids=$query?ip=$ip");
+            $result = $this->getClient()->get("listings/product?ids=$query&ip=$ip");
 
             return json_decode($result->getBody()->getContents(), true);
         } catch (GuzzleException $e) {
