@@ -99,7 +99,7 @@ class ApiService
                 'customerStatus' => 1,
                 'address' => [
                     'street' => $shippingAddress->getStreetLine(1),
-                    'houseNr' => $shippingAddress->getStreetLine(2) . ' ' . $shippingAddress->getStreetLine(3),
+                    'houseNumber' => $shippingAddress->getStreetLine(2) . ' ' . $shippingAddress->getStreetLine(3),
                     'city' => $shippingAddress->getCity(),
                     'postalCode' => $shippingAddress->getPostcode(),
                     'country' => $shippingAddress->getCountryId()
