@@ -13,7 +13,8 @@ class ListingsApi implements ListingsApiInterface
      */
     public function __construct(
         protected ApiService $apiService
-    ) {
+    )
+    {
     }
 
     /**
@@ -36,14 +37,13 @@ class ListingsApi implements ListingsApiInterface
         // Convert comma separated string to array
         $ids = array_filter(array_map('trim', explode(",", $ids)));
 
-        if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+        $ip = $_SERVER['REMOTE_ADDR'];
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             //ip from share internet
             $ip = $_SERVER['HTTP_CLIENT_IP'];
-        }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             //ip pass from proxy
             $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        }else{
-            $ip = $_SERVER['REMOTE_ADDR'];
         }
 
         if (count($ids) === 1) {
