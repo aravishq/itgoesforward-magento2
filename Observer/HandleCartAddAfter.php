@@ -32,7 +32,6 @@ class HandleCartAddAfter implements ObserverInterface
             $quoteItem->setQty(1);
             $quoteItem->setData('it_goes_forward', $itGoesForward->getValue());
             $quoteItem->setCustomPrice($product->getPrice() * 0.95);
-            $quoteItem->save();
         }
     }
 }
