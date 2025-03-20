@@ -36,7 +36,6 @@ class ListingsApi implements ListingsApiInterface
     {
         // Convert comma separated string to array
         $ids = array_filter(array_map('trim', explode(",", $ids)));
-        $ip = "";
         $ip = $_SERVER['REMOTE_ADDR'];
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             //ip from share internet
