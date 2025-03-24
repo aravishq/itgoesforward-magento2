@@ -31,7 +31,7 @@ class HandleCartAddAfter implements ObserverInterface
         if ($itGoesForward && $itGoesForward->getValue()) {
             $quoteItem->setQty(1);
             $quoteItem->setData('it_goes_forward', $itGoesForward->getValue());
-            $price = $product->getPrice() * 0.95;
+            $price = $product->getFinalPrice() * 0.95;
             $quoteItem->setCustomPrice($price);
             $quoteItem->setOriginalCustomPrice($price);
             $quoteItem->getProduct()->setIsSuperMode(true);
