@@ -25,10 +25,13 @@ class HandleCartAddBefore implements ObserverInterface
     public function execute(Observer $observer)
     {
         $itGoesForward = $this->request->getParam('it_goes_forward');
+        $discountValue = $this->request->getParam('discount_value');
 
         if ($itGoesForward) {
             $product = $observer->getProduct();
             $product->addCustomOption('it_goes_forward', $itGoesForward);
+            $product->addCustomOption('discount_value', $discountValue);
+
         }
     }
 }

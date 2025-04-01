@@ -38,6 +38,16 @@ class AddItGoesForwardToQuoteItem implements SchemaPatchInterface
                     'comment' => 'It Goes Forward Product'
                 ]
             );
+
+            $connection->addColumn(
+                $this->moduleDataSetup->getTable('quote_item'),
+                'discount_value',
+                [
+                    'type' => \Magento\Framework\DB\Ddl\Table::TYPE_FLOAT,
+                    'nullable' => true,
+                    'comment' => 'Discount Value'
+                ]
+            );
         } catch (Zend_Db_Exception $e) {
             // Handle exception if needed
         }

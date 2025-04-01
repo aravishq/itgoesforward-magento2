@@ -27,11 +27,17 @@ class HandleCartAddAfter implements ObserverInterface
         $quoteItem = $observer->getEvent()->getQuoteItem();
         $product = $quoteItem->getProduct();
         $itGoesForward = $product->getCustomOption('it_goes_forward');
+        $discountValue = $product->getCustomOption('discount_value');
 
         if ($itGoesForward && $itGoesForward->getValue()) {
             $quoteItem->setQty(1);
             $quoteItem->setData('it_goes_forward', $itGoesForward->getValue());
-            $price = $product->getFinalPrice() * 0.95;
+
+            if($discountValue && $discountValue->getValue()) {
+                $price = $product->getFinalPrice() - $discountValue->getValue();
+            } else {
+                $price = $product->getFinalPrice();
+            }
             $quoteItem->setCustomPrice($price);
             $quoteItem->setOriginalCustomPrice($price);
             $quoteItem->getProduct()->setIsSuperMode(true);
