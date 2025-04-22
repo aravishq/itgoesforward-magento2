@@ -93,7 +93,7 @@ class ApiService
             'webshopOrderId' => $order->getIncrementId(),
             'webshopOrderItemId' => $orderItem->getItemId(),
             'customer' => [
-                'language' => explode('_', $order->getStore()->getLocaleCode())[0],
+                'language' => $order->getStore()->getCode(),
                 'firstName' => $shippingAddress->getFirstname(),
                 'lastName' => $shippingAddress->getLastname(),
                 'phone' => $shippingAddress->getTelephone(),
