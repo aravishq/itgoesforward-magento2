@@ -11,6 +11,7 @@ use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Api\Data\OrderItemInterface;
 
+use Magento\Store\Model\StoreManagerInterface;
 use function is_array;
 use function json_decode;
 
@@ -21,7 +22,8 @@ class ApiService
     protected const API_STATUS = 'it_goes_forward/api/status';
 
     public function __construct(
-        protected ScopeConfigInterface $scopeConfig
+        protected ScopeConfigInterface $scopeConfig,
+        protected StoreManagerInterface $storeManager
     ) {}
 
     public function getListingBySku(string $sku): array
@@ -88,10 +90,10 @@ class ApiService
 
         $data = [
             'listingId' => (int) $listingId,
-            'webshopOrderId' => $order->getId(),
+            'webshopOrderId' => $order->getIncrementId(),
             'webshopOrderItemId' => $orderItem->getItemId(),
             'customer' => [
-                'language' => $order->getStore()->getCode(),
+                'language' => explode('_', $order->getStore()->getLocaleCode())[0],
                 'firstName' => $shippingAddress->getFirstname(),
                 'lastName' => $shippingAddress->getLastname(),
                 'phone' => $shippingAddress->getTelephone(),
@@ -120,11 +122,13 @@ class ApiService
 
     public function getClient(): Client
     {
+        $store = $this->storeManager->getStore();
+        $frontendName = $store->getFrontendName();
         return new Client([
             'base_uri' => $this->scopeConfig->getValue(self::API_URL),
             RequestOptions::HEADERS => [
                 'api-key' => $this->scopeConfig->getValue(self::API_KEY),
-                'User-Agent' => 'Aravis-ItGoesForward/0.1.0',
+                'User-Agent' => 'Aravis-ItGoesForward/0.1.0 (' . $frontendName . ')',
             ],
         ]);
     }
