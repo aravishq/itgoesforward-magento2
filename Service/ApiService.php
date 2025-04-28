@@ -73,6 +73,21 @@ class ApiService
     }
 
     /**
+     * GET all listings
+     * @return array
+     */
+    public function getAllListings(): array
+    {
+        try {
+            $result = $this->getClient()->get("listings");
+
+            return json_decode($result->getBody()->getContents(), true);
+        } catch (GuzzleException $e) {
+            return [];
+        }
+    }
+
+    /**
      * @param \Magento\Sales\Api\Data\OrderInterface|\Magento\Sales\Model\Order $order
      * @param \Magento\Sales\Api\Data\OrderItemInterface                        $orderItem
      * @param string                                                            $listingId
