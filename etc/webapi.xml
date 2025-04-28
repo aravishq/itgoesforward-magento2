@@ -16,6 +16,7 @@
         <resources>
             <resource ref="anonymous"/>
         </resources>
+    </route>
     <route url="/V1/itgoesforward/order/increment_id/:increment_id" method="GET">
         <service class="Aravis\ItGoesForward\Api\OrderByIncrementIdInterface" method="getOrderByIncrementId"/>
         <resources>
