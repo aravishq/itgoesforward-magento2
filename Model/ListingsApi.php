@@ -55,4 +55,16 @@ class ListingsApi implements ListingsApiInterface
             return mb_strtolower($listing['status']) === 'available';
         });
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAllListings(): array
+    {
+        $listings = $this->apiService->getAllListings();
+
+        return array_filter($listings, function (array $listing) {
+            return mb_strtolower($listing['status']) === 'available';
+        });
+    }
 }

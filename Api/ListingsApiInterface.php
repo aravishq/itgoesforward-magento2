@@ -16,4 +16,10 @@ interface ListingsApiInterface
      * @return array
      */
     public function getListingsByProductIds(string $ids): array;
+
+    /**
+     * GET all listings
+     * @return array
+     */
+    public function getAllListings(): array;
 }
