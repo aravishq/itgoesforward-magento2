@@ -35,12 +35,15 @@ class OrderStatusChanged implements ObserverInterface
             && $previousState != Order::STATE_PROCESSING) {
 
             foreach ($order->getAllItems() as $item) {
-                if (!empty($item->getItGoesForward())) {
-                    $this->apiService->createOrderForListing($order, $item, $item->getItGoesForward());
-
-                    // Set quantity of item to 0, so it doesn't get exported to the ERP
-                    $item->setQtyOrdered(0);
+                $productOptions = $item->getProductOptions();
+                if (!isset($productOptions['info_buyRequest']['it_goes_forward'])) {
+                    return;
                 }
+                $itGoesForward = $productOptions['info_buyRequest']['it_goes_forward'];
+                $this->apiService->createOrderForListing($order, $item, $itGoesForward);
+
+                // Set quantity of item to 0, so it doesn't get exported to the ERP
+                $item->setQtyOrdered(0);
             }
         }
     }

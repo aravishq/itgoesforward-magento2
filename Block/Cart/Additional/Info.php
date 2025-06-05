@@ -9,6 +9,6 @@ class Info extends InfoBase
 {
     public function getIsItGoesForwardProduct(): bool
     {
-        return $this->getItem()->getProduct()->getCustomOption('it_goes_forward') !== null;
+        return $this->getItem()->getProduct()->getSku() === 'it-goes-forward';
     }
 }

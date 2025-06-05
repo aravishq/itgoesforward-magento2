@@ -1,20 +1,8 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-  <type name="Magento\CatalogInventory\Observer\SubtractQuoteInventoryObserver">
-    <plugin name="aravis_it_goes_forward_skip_stock_deduction"
-      type="Aravis\ItGoesForward\Plugin\StockDeductionPlugin" />
-  </type>
-  <type name="Magento\Sales\Model\Order\Creditmemo\Item">
-    <plugin name="aravis_it_goes_forward_order_creditmemo_item_plugin"
-      type="Aravis\ItGoesForward\Plugin\CreditmemoItemPlugin" />
-  </type>
-  <type name="Magento\Weee\Model\Total\Creditmemo\Weee">
-    <plugin name="aravis_it_goes_forward_order_creditmemo_weee_plugin"
-      type="Aravis\ItGoesForward\Plugin\CreditmemoWeeePlugin" />
-  </type>
-  <preference for="Aravis\ItGoesForward\Api\ListingsApiInterface"
-    type="Aravis\ItGoesForward\Model\ListingsApi" />
-  <preference for="Aravis\ItGoesForward\Api\OrderByIncrementIdInterface"
-    type="Aravis\ItGoesForward\Model\OrderByIncrementId" />
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Aravis\ItGoesForward\Api\ListingsApiInterface"
+                type="Aravis\ItGoesForward\Model\ListingsApi"/>
+    <preference for="Aravis\ItGoesForward\Api\OrderByIncrementIdInterface"
+                type="Aravis\ItGoesForward\Model\OrderByIncrementId"/>
 </config>
