@@ -5,10 +5,13 @@
 
 $parent = $block->getParentBlock();
 $item = $parent->getItem();
-$itGoesForward = $item->getData('it_goes_forward');
+$productOptions = $item->getProductOptions();
+if (!isset($productOptions['info_buyRequest']['it_goes_forward'])) {
+    return;
+}
+$itGoesForward = $productOptions['info_buyRequest']['it_goes_forward'];
 ?>
 
-<?php if ($itGoesForward): ?>
 <tr>
     <td>
         <strong>
@@ -21,4 +24,3 @@ $itGoesForward = $item->getData('it_goes_forward');
         </strong>
     </td>
 </tr>
-<?php endif; ?>
