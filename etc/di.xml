@@ -5,4 +5,6 @@
                 type="Aravis\ItGoesForward\Model\ListingsApi"/>
     <preference for="Aravis\ItGoesForward\Api\OrderByIncrementIdInterface"
                 type="Aravis\ItGoesForward\Model\OrderByIncrementId"/>
+    <preference for="Magento\Checkout\CustomerData\DefaultItem"
+                type="Aravis\ItGoesForward\Model\CustomerData\DefaultItem"/>
 </config>
