@@ -79,12 +79,13 @@ class CartPlugin
         }
 
         $original = $this->productRepo->get($requestInfo['options']['original_sku']);
+        $originalPrice = $original->getPriceInfo()->getPrice('final_price')->getValue();
 
         $item->getProduct()->setIsSuperMode(true);
         $item->setRedirectUrl($original->getProductUrl());
-        $item->setPrice($original->getData('price'));
-        $item->setCustomPrice($original->getData('price'));
-        $item->setOriginalCustomPrice($original->getData('price'));
+        $item->setPrice($originalPrice);
+        $item->setCustomPrice($originalPrice);
+        $item->setOriginalCustomPrice($originalPrice);
 
         $additionalOptions = [];
 
