@@ -27,18 +27,20 @@ class OrderStatusChanged implements ObserverInterface
         /** @var \Magento\Sales\Model\Order|\Magento\Sales\Api\Data\OrderInterface $order */
         $order = $observer->getEvent()->getOrder();
 
-        $currentState = $order->getState();
+        $newState = $order->getState();
         $previousState = $order->getOrigData('state');
 
         // @todo: have these status be configurable from admin
-        if ($currentState === Order::STATE_PROCESSING
-            && $previousState != Order::STATE_PROCESSING) {
+        if (($newState === Order::STATE_PROCESSING || $newState === Order::STATE_COMPLETE) &&
+            ($previousState !== Order::STATE_PROCESSING && $previousState !== Order::STATE_COMPLETE)) {
 
             foreach ($order->getAllItems() as $item) {
                 $productOptions = $item->getProductOptions();
+
                 if (!isset($productOptions['info_buyRequest']['it_goes_forward'])) {
                     return;
                 }
+                
                 $itGoesForward = $productOptions['info_buyRequest']['it_goes_forward'];
                 $this->apiService->createOrderForListing($order, $item, $itGoesForward);
 
