@@ -83,9 +83,9 @@ class CartPlugin
 
         $item->getProduct()->setIsSuperMode(true);
         $item->setRedirectUrl($original->getProductUrl());
-        $item->setPrice($originalPrice);
-        $item->setCustomPrice($originalPrice);
-        $item->setOriginalCustomPrice($originalPrice);
+        $item->setPrice($originalPrice * 0.95);
+        $item->setCustomPrice($originalPrice * 0.95);
+        $item->setOriginalCustomPrice($originalPrice * 0.95);
 
         $additionalOptions = [];
 
