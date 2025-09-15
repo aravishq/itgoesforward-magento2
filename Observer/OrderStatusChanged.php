@@ -38,7 +38,7 @@ class OrderStatusChanged implements ObserverInterface
                 $productOptions = $item->getProductOptions();
 
                 if (!isset($productOptions['info_buyRequest']['it_goes_forward'])) {
-                    return;
+                    continue;
                 }
 
                 $itGoesForward = $productOptions['info_buyRequest']['it_goes_forward'];
